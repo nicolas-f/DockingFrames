@@ -30,6 +30,7 @@
 
 package test;
 
+import bibliothek.gui.dock.common.intern.CDockable;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -77,14 +78,14 @@ public class MostSimpleClient {
 		
 		add( control, "L", location.group( -1 ).toolbar( 0, 0 ).item( 0 ) );
 
-		add( control, "M", get( control, "L" ).aside() );
-		add( control, "N", get( control, "M" ).aside() );
+		add( control, "M", location ).setLocationsAside(get(control,"L"));
+		add( control, "N", location ).setLocationsAside(get(control,"L"));
 		
 		frame.setBounds( 20, 20, 400, 400 );
 		frame.setVisible( true );
 	}
 
-	private static void add( CControl control, String id, CLocation location ){
+	private static CToolbarItem add( CControl control, String id, CLocation location ){
 		CToolbarItem item = new CToolbarItem( id );
 		item.setItem( new JButton( id ), ExpandedState.SHRUNK );
 		if( !("A".equals( id ) || "B".equals( id ) || "C".equals( id ))){
@@ -93,10 +94,11 @@ public class MostSimpleClient {
 		item.setLocation( location );
 		control.addDockable( item );
 		item.setVisible( true );
+        return item;
 	}
 	
-	private static CLocation get( CControl control, String id ){
+	private static CDockable get( CControl control, String id ){
 		SingleCDockable dockable = control.getSingleDockable( id );
-		return dockable.getBaseLocation();
+		return dockable;
 	}
 }
