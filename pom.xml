@@ -11,7 +11,7 @@
 
 	<groupId>org.dockingframes</groupId>
 	<artifactId>docking-frames-base</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.1.2-ORBISGIS</version> <!-- Until Docking-Frames toolbars is not in release -->
 	<packaging>pom</packaging>
 
 	<modules>
